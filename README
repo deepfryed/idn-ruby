@@ -14,6 +14,10 @@ to and from the ACE encoded form.
 The latest version of the LibIDN Ruby Bindings project and its
 documentation can always be found at
 
+* https://github.com/deepfryed/idn-ruby
+
+The original version can be found at,
+
 * http://rubyforge.org/projects/idn
 
 See the CHANGES file for detailed information on the changes of every
