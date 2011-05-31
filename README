@@ -29,6 +29,8 @@ released version.
 
 * RubyGems[http://docs.rubygems.org/] to produce a Gem package
 
+* Ruby 1.9.1 or above. Patches welcome to make this work in 1.8.7
+
 
 === Installation
 
