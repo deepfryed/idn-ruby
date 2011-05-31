@@ -1,0 +1,4 @@
+ext/*.so
+ext/*.o
+ext/Makefile
+tmp/
