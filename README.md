@@ -1,4 +1,4 @@
-== LibIDN Ruby Bindings
+# LibIDN Ruby Bindings
 
 Version 0.1.0
 
@@ -24,104 +24,126 @@ See the CHANGES file for detailed information on the changes of every
 released version.
 
 
-=== Requirements
+### Requirements
 
-* GNU LibIDN[http://www.gnu.org/software/libidn/] Library
+* [GNU LibIDN](http://www.gnu.org/software/libidn/) Library
 
-* Rake[http://rubyforge.org/projects/rake] to run the tests and generate
+* [Rake](http://rubyforge.org/projects/rake) to run the tests and generate
   the documentation
 
-* RubyGems[http://docs.rubygems.org/] to produce a Gem package
+* [RubyGems](http://docs.rubygems.org/) to produce a Gem package
 
 * Ruby 1.9.1 or above. Patches welcome to make this work in 1.8.7
 
 
-=== Installation
+### Installation
 
 You can easily install the LibIDN Ruby Bindings by following one of the
 ways outlined below:
 
-==== Automatic installation and management with RubyGems
+#### Automatic installation and management with RubyGems
 
 Simply invoke the standard RubyGems commands (install, update, ...),
 for example:
 
-  % gem install --remote --test idn
+```bash
+gem install --remote --test idn
+```
 
 or if the GNU LibIDN library can only be found in a non-standard location
 
-  % gem install --remote --test idn -- \
-      --with-idn-dir=/path/to/non/standard/location
+```bash
+gem install --remote --test idn -- \
+  --with-idn-dir=/path/to/non/standard/location
+```
 
 or in an even more complex setup
 
-  % gem install --remote --test idn -- \
-      --with-idn-lib=/path/to/non/standard/location/lib \
-      --with-idn-include=/path/to/non/standard/location/include
+```bash
+gem install --remote --test idn -- \
+  --with-idn-lib=/path/to/non/standard/location/lib \
+  --with-idn-include=/path/to/non/standard/location/include
+```
 
-==== Semi-automatic installation with Rake
+#### Semi-automatic installation with Rake
 
 If you are not able to or don't want to use RubyGems you can simply
 download the latest release and install it with the help of Rake:
 
-  % tar -xvzf idn-x.x.x.tar.gz
-  % cd idn-x.x.x
+```bash
+tar -xvzf idn-x.x.x.tar.gz
+cd idn-x.x.x
 
-  % rake install
+rake install
+```
 
 or if the GNU LibIDN library can only be found in a non-standard location
 
-  % rake install IDN_DIR=/path/to/non/standard/location
+```bash
+rake install IDN_DIR=/path/to/non/standard/location
+```
 
 You can also run the tests or generate the documentation; just call Rake
 with the '--tasks' parameter to get an overview of the available tasks:
 
-  % rake --tasks
+```bash
+rake --tasks
+```
 
-==== Manual installation with extconf.rb
+#### Manual installation with extconf.rb
 
 If you are not able to or don't want to use even Rake then you will have to
 do a little bit more work by yourself:
 
-  % tar -xvzf idn-x.x.x.tar.gz
-  % cd idn-x.x.x/ext
+```bash
+tar -xvzf idn-x.x.x.tar.gz
+cd idn-x.x.x/ext
 
-  % ruby extconf.rb
+ruby extconf.rb
+```
 
 or if the GNU LibIDN library can only be found in a non-standard location
 
-  % ruby extconf.rb \
-      --with-idn-dir=/path/to/non/standard/location
+```bash
+ruby extconf.rb \
+  --with-idn-dir=/path/to/non/standard/location
+```
 
 or in an even more complex setup
 
-  % ruby extconf.rb \
-      --with-idn-lib=/path/to/non/standard/location/lib \
-      --with-idn-include=/path/to/non/standard/location/include
+```bash
+ruby extconf.rb \
+  --with-idn-lib=/path/to/non/standard/location/lib \
+  --with-idn-include=/path/to/non/standard/location/include
+```
 
 and finally
 
-  % make
-  % sudo make install
+```bash
+make
+sudo make install
+```
 
 
-=== Documentation
+### Documentation
 
 The complete documentation is available online at
 
 * http://rubydoc.info/github/deepfryed/idn-ruby/master/frames
 
-==== Example usage
+#### Example usage
 
-  require 'idn'
-  include IDN
+```ruby
+require 'idn'
+include IDN
 
-  puts 'Idna.toUnicode: ' + Idna.toUnicode('xn--rksmrgs-5wao1o.josefsson.org')
-  puts 'Punycode.decode: ' + Punycode.decode('egbpdaj6bu4bxfgehfvwxn')
-  puts 'Stringprep.with_profile: ' + Stringprep.with_profile('FOO', 'Nameprep')
+puts 'Idna.toUnicode: ' + Idna.toUnicode('xn--rksmrgs-5wao1o.josefsson.org')
+puts 'Punycode.decode: ' + Punycode.decode('egbpdaj6bu4bxfgehfvwxn')
+puts 'Stringprep.with_profile: ' + Stringprep.with_profile('FOO', 'Nameprep')
+```
 
 
-=== References
+### References
 
 [GNU LibIDN]
   An implementation of the Stringprep, Punycode and IDNA specifications
@@ -157,7 +179,7 @@ The complete documentation is available online at
   * http://www.ietf.org/rfc/rfc3492.txt
 
 
-=== Questions, comments, patches?
+### Questions, comments, patches?
 
 If you have any questions, comments or feature requests or if you want
 to submit a bug report or provide a patch, then have a look at the project
@@ -170,7 +192,7 @@ For other information, feel free to ask on the idn-discuss at rubyforge.org
 mailing list.
 
 
-=== Copyright & License
+### Copyright & License
 
 Copyright (c) 2005-2006 Erik Abele. 2011 Bharanee Rathna. All rights reserved.
 
