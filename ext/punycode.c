@@ -69,7 +69,7 @@ static VALUE encode(VALUE self, VALUE str)
   ustr = stringprep_utf8_to_ucs4(RSTRING_PTR(str), RSTRING_LEN(str), &len);
 
   while (1) {
-    buf = realloc(buf, buflen);
+    buf = xrealloc(buf, buflen);
 
     if (buf == NULL) {
       idn_free(ustr);
@@ -117,7 +117,7 @@ static VALUE decode(VALUE self, VALUE str)
   str = rb_check_convert_type(str, T_STRING, "String", "to_s");
 
   len = RSTRING_LEN(str);
-  ustr = malloc(len * sizeof(punycode_uint));
+  ustr = xmalloc(len * sizeof(punycode_uint));
 
   if (ustr == NULL) {
     rb_raise(rb_eNoMemError, "cannot allocate memory (%d bytes)", (uint32_t)len);
