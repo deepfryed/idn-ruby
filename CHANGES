@@ -1,4 +1,9 @@
-Changes with IDN 0.1.1 (2021-06-09)
+Changes with IDN 0.1.2 (2021-06-10)
+
+* add missing includes
+* fix default encoding to use utf8
+
+Changes with IDN 0.1.1 [yanked] (2021-06-09)
 
 * Use xfree() only with memory allocated with xmalloc()/xrealloc(). Free
   IDN-allocated memory with idn_free()

@@ -25,6 +25,7 @@
 #include <stringprep.h>
 #include <punycode.h>
 #include "idn.h"
+#include "idn-free.h"
 
 /*
  * Document-class: IDN::Punycode

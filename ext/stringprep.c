@@ -24,6 +24,7 @@
 #include <ruby.h>
 #include <stringprep.h>
 #include "idn.h"
+#include "idn-free.h"
 
 /*
  * Document-class: IDN::Stringprep
@@ -71,7 +72,7 @@ static VALUE stringprep_internal(VALUE str, const char *profile)
     return Qnil;
   }
 
-  retv = rb_str_new2(buf);
+  retv = rb_utf8_str_new_cstr(buf);
   idn_free(buf);
   return retv;
 }
@@ -155,7 +156,7 @@ static VALUE nfkc_normalize(VALUE self, VALUE str)
   str = rb_check_convert_type(str, T_STRING, "String", "to_s");
   buf = stringprep_utf8_nfkc_normalize(RSTRING_PTR(str), RSTRING_LEN(str));
 
-  retv = rb_str_new2(buf);
+  retv = rb_utf8_str_new_cstr(buf);
   idn_free(buf);
   return retv;
 }

@@ -23,6 +23,7 @@
 #include <ruby.h>
 #include <idna.h>
 #include "idn.h"
+#include "idn-free.h"
 
 /*
  * Document-class: IDN::Idna
@@ -93,7 +94,7 @@ static VALUE toASCII(int argc, VALUE argv[], VALUE self)
     return Qnil;
   }
 
-  retv = rb_str_new2(buf);
+  retv = rb_utf8_str_new_cstr(buf);
   idn_free(buf);
   return retv;
 }
@@ -153,7 +154,7 @@ void init_idna(void)
   eIdnaError = rb_define_class_under(mIdna, "IdnaError", eIDNError);
 
   rb_define_const(mIdna, "ACE_PREFIX",
-                  rb_str_new2(IDNA_ACE_PREFIX));
+                  rb_utf8_str_new_cstr(IDNA_ACE_PREFIX));
   rb_define_const(mIdna, "ALLOW_UNASSIGNED",
                   INT2FIX(IDNA_ALLOW_UNASSIGNED));
   rb_define_const(mIdna, "USE_STD3_ASCII_RULES",

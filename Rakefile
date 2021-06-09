@@ -2,8 +2,6 @@ require 'rubygems'
 require 'rake'
 require 'rake/clean'
 require 'rake/testtask'
-require 'rake/rdoctask'
-require 'rake/extensiontask'
 
 CLEAN << FileList[ 'ext/Makefile', 'ext/*.so', 'ext/*.o' ]
 
@@ -36,18 +34,10 @@ end
 
 Jeweler::GemcutterTasks.new
 
-Rake::ExtensionTask.new do |ext|
-  ext.name    = 'idn'
-  ext.ext_dir = 'ext'
-  ext.lib_dir = 'ext'
-end
-
-Rake::RDocTask.new do |rdoc|
-  version       = File.exist?('VERSION') ? File.read('VERSION') : ""
-  rdoc.rdoc_dir = 'rdoc'
-  rdoc.title    = "idn-ruby #{version}"
-  rdoc.rdoc_files.include('README*')
-  rdoc.rdoc_files.include('lib/**/*.rb')
+task :compile do
+  Dir.chdir('ext') do
+    system('ruby extconf.rb && make') or raise 'failed to compile extension'
+  end
 end
 
 Rake::TestTask.new(:test) do |test|
@@ -56,5 +46,5 @@ Rake::TestTask.new(:test) do |test|
   test.verbose = true
 end
 
-task :test    => [ :compile, :check_dependencies ]
+task :test    => [ :compile ]
 task :default => :test
