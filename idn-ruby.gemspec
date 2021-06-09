@@ -24,13 +24,13 @@ Gem::Specification.new do |s|
   s.extensions = ["ext/extconf.rb"]
   s.extra_rdoc_files = [
     "LICENSE",
-    "README"
+    "README.md"
   ]
   s.files = [
     "CHANGES",
     "LICENSE",
     "NOTICE",
-    "README",
+    "README.md",
     "Rakefile",
     "ext/idn.c",
     "ext/idn.h",
