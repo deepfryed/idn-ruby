@@ -72,7 +72,7 @@ static VALUE stringprep_internal(VALUE str, const char *profile)
   }
 
   retv = rb_str_new2(buf);
-  xfree(buf);
+  idn_free(buf);
   return retv;
 }
 
@@ -156,7 +156,7 @@ static VALUE nfkc_normalize(VALUE self, VALUE str)
   buf = stringprep_utf8_nfkc_normalize(RSTRING_PTR(str), RSTRING_LEN(str));
 
   retv = rb_str_new2(buf);
-  xfree(buf);
+  idn_free(buf);
   return retv;
 }
 

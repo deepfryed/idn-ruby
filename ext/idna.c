@@ -88,13 +88,13 @@ static VALUE toASCII(int argc, VALUE argv[], VALUE self)
   rc = idna_to_ascii_8z(RSTRING_PTR(str), &buf, flags);
 
   if (rc != IDNA_SUCCESS) {
-    xfree(buf);
+    idn_free(buf);
     rb_raise(eIdnaError, "%s (%d)", idna_strerror(rc), rc);
     return Qnil;
   }
 
   retv = rb_str_new2(buf);
-  xfree(buf);
+  idn_free(buf);
   return retv;
 }
 
@@ -128,13 +128,13 @@ static VALUE toUnicode(int argc, VALUE argv[], VALUE self)
   rc = idna_to_unicode_8z8z(RSTRING_PTR(str), &buf, flags);
 
   if (rc != IDNA_SUCCESS) {
-    xfree(buf);
+    idn_free(buf);
     rb_raise(eIdnaError, "%s (%d)", idna_strerror(rc), rc);
     return Qnil;
   }
 
   retv = rb_enc_str_new(buf, strlen(buf), rb_utf8_encoding());
-  xfree(buf);
+  idn_free(buf);
   return retv;
 }
 

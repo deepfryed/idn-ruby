@@ -72,7 +72,7 @@ static VALUE encode(VALUE self, VALUE str)
     buf = realloc(buf, buflen);
 
     if (buf == NULL) {
-      xfree(ustr);
+      idn_free(ustr);
       rb_raise(rb_eNoMemError, "cannot allocate memory (%d bytes)", (uint32_t)buflen);
       return Qnil;
     }
@@ -84,7 +84,7 @@ static VALUE encode(VALUE self, VALUE str)
     } else if (rc == PUNYCODE_BIG_OUTPUT) {
       buflen += 0x100;
     } else {
-      xfree(ustr);
+      idn_free(ustr);
       xfree(buf);
       rb_raise(ePunycodeError, "%s (%d)", punycode_strerror(rc), rc);
       return Qnil;
@@ -92,7 +92,7 @@ static VALUE encode(VALUE self, VALUE str)
   }
 
   retv = rb_str_new(buf, buflen);
-  xfree(ustr);
+  idn_free(ustr);
   xfree(buf);
   return retv;
 }
@@ -136,7 +136,7 @@ static VALUE decode(VALUE self, VALUE str)
   buf = stringprep_ucs4_to_utf8(ustr, len, NULL, &len);
   retv = rb_enc_str_new(buf, len, rb_utf8_encoding());
   xfree(ustr);
-  xfree(buf);
+  idn_free(buf);
   return retv;
 }
 
