@@ -1,6 +1,6 @@
 # LibIDN Ruby Bindings
 
-Version 0.1.0
+Version 0.1.2
 
 Ruby Bindings for the GNU LibIDN library, an implementation of the
 Stringprep, Punycode and IDNA specifications defined by the IETF
@@ -37,6 +37,11 @@ released version.
 
 
 ### Installation
+
+You need GNU LibIDN installed first.
+
+* On MacOS you can install it with `brew install libidn`
+* On Debian flavours of Linux `apt-get install libidn11-dev`
 
 You can easily install the LibIDN Ruby Bindings by following one of the
 ways outlined below:
