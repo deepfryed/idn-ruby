@@ -70,6 +70,11 @@ gem install --remote --test idn -- \
   --with-idn-include=/path/to/non/standard/location/include
 ```
 
+#### Apple silicon
+```
+gem install idn-ruby -- --with-idn-dir=$(brew --prefix libidn)
+```
+
 #### Semi-automatic installation with Rake
 
 If you are not able to or don't want to use RubyGems you can simply
