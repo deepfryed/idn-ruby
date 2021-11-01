@@ -155,7 +155,9 @@ static VALUE nfkc_normalize(VALUE self, VALUE str)
 
   str = rb_check_convert_type(str, T_STRING, "String", "to_s");
   buf = stringprep_utf8_nfkc_normalize(RSTRING_PTR(str), RSTRING_LEN(str));
-
+  if (buf == NULL) {
+    return Qnil;
+  }
   retv = rb_utf8_str_new_cstr(buf);
   idn_free(buf);
   return retv;

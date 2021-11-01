@@ -48,7 +48,8 @@ class Test_Stringprep < Test::Unit::TestCase
 
   TESTCASES_NFKC = {
     'A' => [ "\xC2\xB5", "\xCE\xBC" ],
-    'B' => [ "\xC2\xAA", "\x61" ]
+    'B' => [ "\xC2\xAA", "\x61" ],
+    'C' => [ "\xE8", nil ]
   }
 
   def setup
