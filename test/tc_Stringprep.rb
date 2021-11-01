@@ -48,8 +48,7 @@ class Test_Stringprep < Test::Unit::TestCase
 
   TESTCASES_NFKC = {
     'A' => [ "\xC2\xB5", "\xCE\xBC" ],
-    'B' => [ "\xC2\xAA", "\x61" ],
-    'C' => [ "\xE8", nil ]
+    'B' => [ "\xC2\xAA", "\x61" ]
   }
 
   def setup
@@ -77,6 +76,10 @@ class Test_Stringprep < Test::Unit::TestCase
     TESTCASES_NFKC.each do |key, val|
       rc = Stringprep.nfkc_normalize(val[0])
       assert_equal(val[1], rc, "TestCase #{key} failed")
+    end
+
+    assert_raise(ArgumentError, "TestCase \xE8 failed") do
+      Stringprep.nfkc_normalize("\xE8")
     end
   end
 end
