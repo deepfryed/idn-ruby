@@ -52,20 +52,20 @@ Simply invoke the standard RubyGems commands (install, update, ...),
 for example:
 
 ```bash
-gem install --remote --test idn
+gem install --remote idn-ruby
 ```
 
 or if the GNU LibIDN library can only be found in a non-standard location
 
 ```bash
-gem install --remote --test idn -- \
+gem install --remote idn-ruby \
   --with-idn-dir=/path/to/non/standard/location
 ```
 
 or in an even more complex setup
 
 ```bash
-gem install --remote --test idn -- \
+gem install --remote idn-ruby -- \
   --with-idn-lib=/path/to/non/standard/location/lib \
   --with-idn-include=/path/to/non/standard/location/include
 ```
