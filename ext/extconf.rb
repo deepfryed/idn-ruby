@@ -21,6 +21,8 @@
 
 require 'mkmf'
 
+pkg_config 'libidn'
+
 @libs = ['idn']
 @headers = ['idna.h', 'punycode.h', 'stringprep.h']
 
