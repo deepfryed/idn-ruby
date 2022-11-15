@@ -1,3 +1,7 @@
+Changes with IDN 0.1.5 (2022-11-16)
+
+* Minor updates to support compilation of M1 silicon.
+
 Changes with IDN 0.1.4 (2021-11-02)
 
 * nfkc_normalize raises ArgumentError instead of returning nil for
